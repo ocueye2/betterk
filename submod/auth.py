@@ -8,7 +8,7 @@ auth_bp = Blueprint("auth", __name__)
 # ---------- Database helpers ----------
 def get_db():
     if "db" not in g:
-        g.db = sqlite3.connect("users.db")
+        g.db = sqlite3.connect("data/main.db")
         g.db.row_factory = sqlite3.Row
     return g.db
 

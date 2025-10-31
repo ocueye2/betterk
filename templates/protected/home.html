@@ -10,8 +10,11 @@
 <body>
     <div>
         <div class="container">
-            <h1>Welcome, {{ name }}!</h1>
-            <p>You have successfully logged in to the protected home page.</p>
+            <h1>Pods</h1>
+            {% for pod in pods %}
+                <p>{{ pod.metadata.name }}</p>
+            {% endfor %}
+            <p>
         </div>
         <div class="sidebar">
             <a href="/logout">Logout</a>
