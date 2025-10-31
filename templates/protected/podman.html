@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Protected Area</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        /* --- General Page & Container Styling --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f4f7f6; /* Very light background for a clean look */
+            margin: 0;
+            padding: 0;
+        }
+        
+        main {
+            display: grid;
+            /* Responsive Grid: Items will auto-fit with a minimum width of 140px */
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px; /* Increased gap for better separation */
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto; /* Center the main content area */
+        }
+
+        /* --- Link and Grid Item Styling --- */
+        a {
+            text-decoration: none; /* Remove underline */
+            display: block; 
+            color: #333; /* Default dark text color */
+        }
+
+        /* --- Bubble/Card Styling --- */
+        .bubble {
+            display: flex; /* Use flex for alignment */
+            flex-direction: column; /* Stack content vertically (icon + name) */
+            align-items: center;
+            justify-content: center;
+            padding: 20px 10px; /* Generous padding */
+            min-height: 100px; /* Fixed minimum height for uniform cards */
+            border-radius: 10px; /* Slightly smoother corners */
+            font-size: 14px;
+            text-align: center;
+            
+            /* Modern Card Look */
+            background-color: #ffffff; /* White background for the card */
+            border: 1px solid #e0e0e0; /* Subtle border */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Light shadow for depth */
+            
+            /* Transition for smooth effects */
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+        }
+
+        /* Hover Effect for Interactivity */
+        a:hover .bubble {
+            transform: translateY(-3px); /* Lifts the card slightly */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Darker shadow on hover */
+            border-color: #a3ccf1; /* Highlight border */
+        }
+        
+        /* Icon Styling */
+        .bubble i {
+            font-size: 2.5rem; /* Large icon size */
+            margin-bottom: 10px;
+        }
+
+        /* --- Folder/File Specific Colors --- */
+        .file-folder i {
+            color: #ffc107; /* Yellow for folder icon */
+        }
+        .file-folder {
+            /* Light blue background for folder cards */
+            background-color: #eaf6ff; 
+        }
+
+        .file-file i {
+            color: #007bff; /* Primary blue for file icon */
+        }
+        .file-file {
+            /* Very light green background for file cards */
+            background-color: #f0fff0;
+        }
+        
+        /* Ensures the file name is visible and wraps */
+        .file-name {
+            display: block;
+            word-wrap: break-word;
+            max-width: 100%;
+            font-weight: 500;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        {% for file in files %}
+        <a href="{{ file.url }}" title="{{ file.name }}">
+            <div class="file-{{ file.type }} bubble">
+                {% if file.type == 'folder' %}
+                    <i class="fas fa-folder"></i>
+                {% else %}
+                    <i class="fas fa-file"></i>
+                {% endif %}
+                
+                <span class="file-name">{{ file.name }}</span>
+            </div>
+        </a>
+        {% endfor %}
+    </main>
+</body>
+
+</html>

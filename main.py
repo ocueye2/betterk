@@ -26,6 +26,11 @@ with app.app_context():
 def protected():
     return render_template("protected/home.html", name=current_user.username)
 
+@app.route("/protected/podmanage")
+@login_required
+def podmanage():
+    return render_template("protected/podman.html", files=Internal.listdir("example"))
+
+
 if __name__ == "__main__":
-    Internal.link("example-pod", "example/test", "file","test")
     app.run(debug=True)
