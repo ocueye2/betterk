@@ -1,0 +1,46 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6; /* Light gray background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Login Container Styling */
+.container {
+    background-color: #ffffff; /* White card background */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+            border-bottom: 2px solid #007bff; /* Underline effect */
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212; /* Dark background */
+        color: #e0e0e0; /* Light text */
+    }
+
+    .container {
+        background-color: #1e1e1e; /* Dark card background */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Darker shadow */
+    }
+
+    h1 {
+            color: #ececec;
+
+        }
+}
